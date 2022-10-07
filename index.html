@@ -1,146 +1,34 @@
 <!DOCTYPE html>
 <!-- if you're using this i'm honestly so sorry you're struggling with an ed. i know i'm a hypocrite for making this tool but please consider recovery <3 -->
-<html>
-    <head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>cal restriction grading system</title>
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-    
-    * {
-        box-sizing:border-box;
-    }
-    
-        body {
-            padding:20px;
-            margin:0;
-            background-color:#5E3C58;
-            color:white;
-            font-family:Roboto, sans-serif;
-            display:flex;
-            flex-direction:column;
-            width:100vw;
-            height:100vh;
-        }
-        
-        main {
-            font-size:2.5rem;
-            display:flex;
-            flex-direction:column;
-            flex:1;
-        }
-        
-        a {
-            color:white;
-            opacity:.5;
-            transition:.2s;
-        }
-        a:hover {
-            opacity:.9;
-        }
-        label {
-            border:solid 1px rgba(255,255,255,.1);
-            padding:20px ;
-            margin:10px 0;
-            border-radius:5px;
-        }
-        input {
-            display:block;
-            padding:10px;
-            color:inherit;
-            font-family:inherit;
-            background-color:rgba(255,255,255,.1);
-            border:solid 1px rgba(255,255,255,.2);
-            font-size:1.5rem;
-            border-radius:5px;
-        }
-        
-        button {
-            padding:10px;
-            color:inherit;
-            background-color:rgba(255,255,255,.1);
-            font-family:inherit;
-            font-size:1.5rem;
-            border:solid 1px rgba(255,255,255,.2);
-            margin:10px 0;
-            width:max-content;
-            border-radius:5px;
-            cursor:pointer;
-            transition:.2s;
-        }
-        button:hover {
-            background-color:rgba(255,255,255,.3);
-        }
-        
-        footer {
-            width:100%;
-        }
-        
-    </style>
-    </head>
-    <body>
-        <header>
-            <h1>cal restriction grading system</h1>
-            <p>adapted from <a href="https://twitter.com/poetsnarclssus/status/1578111764230639616?s=20&t=y_R73tijDe_Jy95Rfpmjdg" target="_blank">this thread</a>
-        </header>
-        <main>
-        <label>
-            calories consumed:
-            <input id="consumed" type="number">
-        </label>
-        <label>
-            calorie limit:
-            <input id="limit" type="number">
-        </label>
-        <button>what's my grade?</button>
-        <p id="grade"></p>
-        </main>
-        <footer>
-            system by <a href="https://twitter.com/poetsnarclssus">@poetsnarclssus</a>, calculator by <a href="https://twitter.com/fragileraindrop" target="_blank">@fragileraindrop</a>.
-        </footer>
-    </body>
-    <script>
-const consumedInput = document.getElementById('consumed');
-const limitInput = document.getElementById('limit');
-const submit = document.querySelector('button');
-const gradeOutput = document.getElementById('grade');
-
-const calc = () => {
-    const limit = limitInput.value;
-    const consumed = consumedInput.value;
-    if (limit == 0) {
-        if (consumed <= 0) return 100;
-        if (consumed > 0) return 0;
-    }
-    const gradePercent = 100 - ((consumed / (limit * (10/3))) * 100);
-    return gradePercent;
-}
-
-const getLetter = (grade) => {
-    if (grade >= 97) return 'A+';
-    if (grade < 97 && grade >= 94) return 'A';
-    if (grade < 94 && grade >= 90) return 'A-';
-    if (grade < 90 && grade >= 87) return 'B+';
-    if (grade < 87 && grade >= 84) return 'B';
-    if (grade < 84 && grade >= 80) return 'B-';
-    if (grade < 80 && grade >= 77) return 'C+';
-    if (grade < 77 && grade >= 74) return 'C';
-    if (grade < 74 && grade >= 70) return 'C-';
-    if (grade < 70 && grade >= 67) return 'D+';
-    if (grade < 67 && grade >= 64) return 'D';
-    if (grade < 64 && grade >= 60) return 'D-';
-    if (grade < 60) return 'F';
-    return 'Error'
-}
-
-const showGrade = () => {
-    if (!consumedInput.value || !limitInput.value) return;
-    const grade = calc();
-    const letter = getLetter(grade);
-    gradeOutput.textContent = `your grade is ${grade}%, which is a${grade >= 90 || grade < 60 ? 'n ':''} ${letter}.`;
-}
-
-
-submit.addEventListener('click', showGrade)
-        
-    </script>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+        <h1>cal restriction grading system</h1>
+        <p>adapted from <a href="https://twitter.com/poetsnarclssus/status/1578111764230639616?s=20&t=y_R73tijDe_Jy95Rfpmjdg" target="_blank">this thread</a>
+    </header>
+    <main>
+    <label>
+        calories consumed:
+        <input id="consumed" type="number">
+    </label>
+    <label>
+        calorie limit:
+        <input id="limit" type="number">
+    </label>
+    <button>what's my grade?</button>
+    <p id="grade"></p>
+    </main>
+    <footer>
+        system by <a href="https://twitter.com/poetsnarclssus">@poetsnarclssus</a>, calculator by <a href="https://twitter.com/fragileraindrop" target="_blank">@fragileraindrop</a>.
+    </footer>
+  </body>
 </html>
